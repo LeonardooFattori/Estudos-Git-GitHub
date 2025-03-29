@@ -75,5 +75,92 @@ Este repositório contém uma coletânea de perguntas e respostas sobre Git e Gi
 - `git pull`: Atualiza o repositório local com as mudanças remotas.
 - `git fetch`: Baixa as mudanças, mas não aplica automaticamente.
 
+### 19) Dois desenvolvedores estão trabalhando em um mesmo projeto.  
+
+**a) Por que o comando da Linha 6 irá falhar?**  
+Porque a Desenvolvedora B já realizou um push com novas alterações, e o repositório remoto tem mudanças que o Desenvolvedor A ainda não baixou. O Git impede que um push sobrescreva alterações remotas para evitar perda de dados.  
+
+**b) O que aconteceria se o Desenvolvedor A executasse um comando pull entre as Linhas 5 e 6?**  
+Ele baixaria as alterações da Desenvolvedora B antes de tentar o push. Se houver conflitos, ele precisaria resolvê-los antes de concluir o push.  
+
+### 20) O que fazer caso ocorra um conflito de merge após um `git pull`?  
+O conflito deve ser resolvido manualmente editando os arquivos, escolhendo quais mudanças manter e, em seguida, realizando um novo commit. Para evitar conflitos em equipe, boas práticas incluem sempre fazer `git pull` antes de iniciar mudanças e comunicar alterações grandes.  
+
+### 21) O que são branches e qual sua função?  
+Branches são ramificações independentes do código usadas para desenvolver novas funcionalidades sem afetar o código principal.  
+
+### 22) Diferença entre `git branch` e `git branch issue-22`:  
+- `git branch`: Lista todas as branches do repositório.  
+- `git branch issue-22`: Cria uma nova branch chamada `issue-22`.  
+
+### 23) Para que serve `git checkout`?  
+1. Mudar para outra branch (`git checkout nome-da-branch`).  
+2. Restaurar um arquivo para sua versão mais recente (`git checkout -- nome-do-arquivo`).  
+3. Criar uma nova branch e mudar para ela (`git checkout -b nova-branch`).  
+
+### 24) Como funciona o processo de merge entre branches?  
+Unir mudanças de uma branch a outra. Exemplo:  
+```bash
+# Alternar para a branch principal
+git checkout main
+# Fazer o merge da branch de desenvolvimento
+git merge feature-branch
+```
+Se houver conflitos, é necessário resolvê-los antes de concluir o merge.  
+
+### 25) O que é merge hell?  
+Situação onde muitos conflitos de merge ocorrem, tornando difícil integrar mudanças.  
+
+### 26) O que é Integração Contínua e como evita merge hell?  
+Prática de integrar mudanças frequentemente para evitar acúmulo de conflitos.  
+
+### 27) Para que serve a variável HEAD? O que é Detached HEAD?  
+- **HEAD** aponta para o commit atual.  
+- **Detached HEAD** ocorre quando se acessa um commit antigo, sem estar em uma branch. Mudanças feitas nesse estado podem ser perdidas se não forem salvas corretamente.  
+
+### 28) Como ficará o grafo de commits após os comandos listados?  
+O histórico terá um novo commit `add something.py`, seguido pelo merge da branch `issue-22`.  
+
+### 29) Para que serve `git stash`?  
+Salva temporariamente mudanças não commitadas, permitindo mudar de branch sem perdê-las.  
+
+### 30) Diferença entre `git stash pop` e `git stash apply`:  
+- `git stash pop`: Aplica as mudanças salvas e remove do stash.  
+- `git stash apply`: Aplica as mudanças, mas mantém no stash.  
+
+### 31) Para que serve `.gitignore`?  
+Define arquivos que devem ser ignorados pelo Git, como logs e configurações locais.  
+
+### 32) Para que serve `git rebase`?  
+Reorganiza commits para manter um histórico linear.  
+
+### 33) Por que `git rebase` deve ser usado com cautela?  
+Se usado em commits já enviados ao repositório remoto, pode causar problemas para outros desenvolvedores.  
+
+### 34) O que são pull requests e sua importância?  
+Solicitação para mesclar mudanças em um repositório remoto, permitindo revisão antes da integração.  
+
+### 35) Para que serve `git squash`?  
+Combina múltiplos commits em um só, útil para manter o histórico limpo antes de um pull request.  
+
+### 36) Para que serve um fork? Diferença entre fork e clone?  
+- **Fork**: Cria uma cópia independente de um repositório no GitHub.  
+- **Clone**: Copia um repositório para o computador local, mas ainda vinculado ao original.  
+
+### 37) Como utilizar fork para colaborar em software livre?  
+Fluxo básico para contribuir:  
+```bash
+# Fazer fork do repositório no GitHub
+git clone URL_DO_FORK
+cd projeto
+git checkout -b minha-correção
+# Fazer mudanças, commit e push
+git push origin minha-correção
+# Criar um pull request no GitHub
+```
+
+### 38) O que são issues no GitHub?  
+São registros de problemas, sugestões ou tarefas dentro de um repositório.
+
 ## Contribuição
 Este repositório é um material de estudo pessoal, mas caso queira sugerir melhorias ou complementar as respostas, sinta-se à vontade para abrir um pull request!
